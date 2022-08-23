@@ -1,8 +1,10 @@
 package library;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class UtilityLibrary {
 	
@@ -38,6 +40,52 @@ public class UtilityLibrary {
 	public void enterIntoFrame(int index) {
 		driver.switchTo().frame(index);
 	}
+	
+	public void backToDefaultFromFrame() {
+		driver.switchTo().defaultContent();
+	}
+	
+	
+	
+	
+	/**Select Functionality**/
+	
+	public void selectFunctionByValue(By locator, String value) {
+		
+		Select mySelect = new Select(driver.findElement(locator));
+		mySelect.selectByValue(value);
+		
+	}
+	
+	public void selectFunctionByVisibleText(By locator, String text) {
+		
+		Select mySelect = new Select(driver.findElement(locator));
+		mySelect.selectByVisibleText(text);
+		
+	}
+	
+	public void selectFunctionByIndex(By locator, int index) {
+		
+		Select mySelect = new Select(driver.findElement(locator));
+		mySelect.selectByIndex(index);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	public void setElementAttribute(String id) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("document.getElementById('" + id + "').setAttribute('style', 'display: block;')");
+	}
+	
+	
+	
+	
+	
 	
 	
 	

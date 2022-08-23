@@ -6,88 +6,45 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
 
-public class Selectmenu {
+import library.BaseTest;
+import library.UtilityLibrary;
 
-	static WebDriver driver;
+public class Selectmenu extends BaseTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void selectTest() {
 
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/Driver/chromedriver");
+		lib.clickElement(By.linkText("Selectmenu"));
 
-		driver = new ChromeDriver();
+		lib.enterIntoFrame(0);
 
-		try {
+		lib.setElementAttribute("files");
+		lib.customeWait(2);
 
-			driver.get("https://jqueryui.com/");
+		lib.selectFunctionByValue(By.id("files"), "somefile");
 
-			driver.findElement(By.linkText("Selectmenu")).click();
+		lib.customeWait(2);
 
-			driver.switchTo().frame(0);
+		lib.setElementAttribute("number");
 
-//			driver.findElement(By.id("speed-button")).click();
-//			customeWait(2);
-//
-//			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-//			wait.until(ExpectedConditions.elementToBeClickable(By.id("ui-id-5")));
-//
-//			driver.findElement(By.id("ui-id-5")).click();
-//
-			
-			setElementAttribute("files");
-			customeWait(2);
-			
-			WebElement selectFile = driver.findElement(By.id("files"));
-			
-			Select mySelect = new Select(selectFile);
-			mySelect.selectByValue("somefile");
-			
-			customeWait(2);
-			
-			setElementAttribute("number");
-			
-			mySelect = new Select(driver.findElement(By.id("number")));
-			mySelect.selectByVisibleText("10");
-			
-			customeWait(2);
-			
-			setElementAttribute("salutation");
-			
-			WebElement titleSelect = driver.findElement(By.id("salutation"));
-			mySelect = new Select(titleSelect);
-			mySelect.selectByIndex(3);
-			
-			customeWait(3);
-			
-			
-			driver.switchTo().parentFrame();
-			
-			driver.findElement(By.linkText("Custom Rendering")).click();
-			
-			customeWait(2);
-			
+		lib.selectFunctionByVisibleText(By.id("number"), "10");
 
-		} catch (
+		lib.customeWait(2);
 
-		Exception e) {
-			e.printStackTrace();
-		} finally {
-			driver.quit();
-		}
+		lib.setElementAttribute("salutation");
 
-	}
+		lib.selectFunctionByIndex(By.id("salutation"), 3);
 
-	static void customeWait(int second) {
-		try {
-			Thread.sleep(second * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+		lib.customeWait(3);
 
-	static void setElementAttribute(String id) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.getElementById('" + id + "').setAttribute('style', 'display: block;')");
+		lib.backToDefaultFromFrame();
+
+		lib.clickElement(By.linkText("Custom Rendering"));
+
+		lib.customeWait(2);
+
 	}
 
 }
