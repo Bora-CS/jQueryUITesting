@@ -24,9 +24,10 @@ public class CheckboxRadio extends BaseTest{
 		
 
 		
-		clickElement(By.linkText("Radio Group"));
-		driver.switchTo().frame(0);
-		clickElement(By.xpath("//label[text()='Paris']"));
+		lib.clickElement(By.linkText("Radio Group"));
+		lib.enterIntoFrame(0);
+		
+		lib.clickElement(By.xpath("//label[text()='Paris']"));
 		
 	}
 	
@@ -35,22 +36,27 @@ public class CheckboxRadio extends BaseTest{
 	@Test
 	public void noIconTest() {
 
-		driver.findElement(By.linkText("No Icons")).click();
+		lib.clickElement(By.linkText("No Icons"));
 
-		driver.switchTo().frame(driver.findElement(By.className("demo-frame")));
-
-		clickElement(By.xpath("//label[text()='New York']"));
+		lib.enterIntoFrame(By.className("demo-frame"));
+		lib.enterIntoFrame(0);
 		
-		List<WebElement> hotelRate = driver.findElements(By.xpath("//*[text()='Hotel Ratings: ']/..//label"));
+		
+
+		lib.clickElement(By.xpath("//label[text()='New York']"));
+		
+		List<WebElement> hotelRate = lib.getListOfElements(By.xpath("//*[text()='Hotel Ratings: ']/..//label"));
+		
+		
 		
 		for(WebElement rate: hotelRate) {
-			clickElement(rate);
+			lib.clickElement(rate);
 		}
 		
-		List<WebElement> bedType = driver.findElements(By.xpath("//*[text()='Bed Type: ']/..//label"));
+		List<WebElement> bedType = lib.getListOfElements(By.xpath("//*[text()='Bed Type: ']/..//label"));
 		
 		for(WebElement bed: bedType) {
-			clickElement(bed);
+			lib.clickElement(bed);
 		}		
 
 	}
@@ -58,23 +64,25 @@ public class CheckboxRadio extends BaseTest{
 	@Test
 	public void defaultTest() {
 
-		driver.switchTo().frame(0);
+		lib.enterIntoFrame(0);
 
-		driver.findElement(By.xpath("//label[text()='New York']")).click();
+		lib.clickElement(By.xpath("//label[text()='New York']"));
+		lib.clickElement(By.xpath("//label[@for='checkbox-1']/span[contains(@class,'checkboxradio')][1]"));
+		lib.clickElement(By.xpath("//label[text()='r']"));
+		
+		
+		lib.customeWait(2);
 
-		driver.findElement(By.xpath("//label[@for='checkbox-1']/span[contains(@class,'checkboxradio')][1]")).click();
+	
+		lib.clickElement(By.xpath("//label[@for='checkbox-nested-2']/span[contains(@class,'checkboxradio')][1]"));
 
-		driver.findElement(By.xpath("//label[text()='r']")).click();
-
-		customeWait(2);
-
-		driver.findElement(By.xpath("//label[@for='checkbox-nested-2']/span[contains(@class,'checkboxradio')][1]"))
-				.click();
-
-		WebElement checkBox_1Bed = driver.findElement(By.xpath("//*[@for='checkbox-nested-4']"));
+		
+		
+		WebElement checkBox_1Bed = lib.getElement(By.xpath("//*[@for='checkbox-nested-4']"));
+		
 		checkBox_1Bed.click();
 
-		customeWait(2);
+		lib.customeWait(2);
 
 		boolean isChecked = checkBox_1Bed.isSelected();
 
@@ -82,22 +90,6 @@ public class CheckboxRadio extends BaseTest{
 
 	}
 
-	public void clickElement(By locator) {
-		customeWait(1);
-		driver.findElement(locator).click();
-	}
-	
-	public void clickElement(WebElement elem) {
-		customeWait(1);
-		elem.click();
-	}
 
-	static void customeWait(int second) {
-		try {
-			Thread.sleep(second * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 
 }
