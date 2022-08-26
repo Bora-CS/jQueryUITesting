@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import library.BaseTest;
 import pageLocators.WidgetLoactors;
 
-public class Menu extends BaseTest {
+public class Menu extends BaseTest{
 
 	
 	@Test

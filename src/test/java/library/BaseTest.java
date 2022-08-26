@@ -25,7 +25,7 @@ public class BaseTest {
 	
 	@AfterMethod
 	public void endTest() {
-//		customeWait(3);
+		lib.customeWait(3);
 		driver.quit();
 	}
 	

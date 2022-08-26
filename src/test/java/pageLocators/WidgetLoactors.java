@@ -24,6 +24,11 @@ public class WidgetLoactors {
 	
 	
 	
+	public static final	By leftNavigation_RadioGroup = By.linkText("Radio Group");
+	public static final By CheckBoxRadio_radio_paris =By.xpath("//label[text()='Paris']");
+	
+	public static final By CheckBoxRadio_example_noIcon =By.linkText("No Icons");
+	public static final By CheckBoxRadio_frame = By.className("demo-frame");
 	
 
 }

@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import library.BaseTest;
+import pageLocators.WidgetLoactors;
 
 public class CheckboxRadio extends BaseTest{
 
@@ -24,10 +25,10 @@ public class CheckboxRadio extends BaseTest{
 		
 
 		
-		lib.clickElement(By.linkText("Radio Group"));
+		lib.clickElement(WidgetLoactors.leftNavigation_RadioGroup);
 		lib.enterIntoFrame(0);
 		
-		lib.clickElement(By.xpath("//label[text()='Paris']"));
+		lib.clickElement(WidgetLoactors.CheckBoxRadio_radio_paris);
 		
 	}
 	
@@ -36,9 +37,9 @@ public class CheckboxRadio extends BaseTest{
 	@Test
 	public void noIconTest() {
 
-		lib.clickElement(By.linkText("No Icons"));
+		lib.clickElement(WidgetLoactors.CheckBoxRadio_example_noIcon);
 
-		lib.enterIntoFrame(By.className("demo-frame"));
+		lib.enterIntoFrame(WidgetLoactors.CheckBoxRadio_frame);
 		lib.enterIntoFrame(0);
 		
 		

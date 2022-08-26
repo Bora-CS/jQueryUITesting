@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class UtilityLibrary {
 
 	WebDriver driver;
-	final boolean demo = true;
+	final boolean demo = false;
 
 	public UtilityLibrary(WebDriver passedDriver) {
 
@@ -46,9 +46,16 @@ public class UtilityLibrary {
 	}
 
 	public String getText(By locator) {
-		String text = driver.findElement(locator).getText();
+		String text = getElement(locator).getText();
 		return text;
 	}
+	
+	public void enterText(By locator, String text) {
+		getElement(locator).sendKeys(text);
+		
+	}
+	
+	
 
 	public void enterIntoFrame(int index) {
 		driver.switchTo().frame(index);
@@ -86,7 +93,6 @@ public class UtilityLibrary {
 	}
 
 	/** Actions Functionality **/
-
 	public void hoverToElement(By locator) {
 
 		Actions myAction = new Actions(driver);
