@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="widget.Accordion">
+      <class name="dataDriven.Costco">
         <methods>
+          <include name="test" invocation-numbers="6"/>
           <include name="startTest"/>
-          <include name="collapseContent"/>
           <include name="endTest"/>
         </methods>
-      </class> <!-- widget.Accordion -->
+      </class> <!-- dataDriven.Costco -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

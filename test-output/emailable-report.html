@@ -9,18 +9,17 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">13,518</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">379,446</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">widget.Accordion</td><td><a href="#m0">collapseContent</a></td><td rowspan="1">1660610986372</td><td rowspan="1">4576</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">widget.Accordion</td><td><a href="#m1">defaultTest</a></td><td rowspan="1">1660610993338</td><td rowspan="1">3403</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">dataDriven.Costco</td><td><a href="#m0">test</a></td><td rowspan="1">1661474289988</td><td rowspan="1">18021</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="9">dataDriven.Costco</td><td><a href="#m1">test</a></td><td rowspan="9">1661474399803</td><td rowspan="9">13363</td></tr><tr class="passedeven"><td><a href="#m2">test</a></td></tr><tr class="passedeven"><td><a href="#m3">test</a></td></tr><tr class="passedeven"><td><a href="#m4">test</a></td></tr><tr class="passedeven"><td><a href="#m5">test</a></td></tr><tr class="passedeven"><td><a href="#m6">test</a></td></tr><tr class="passedeven"><td><a href="#m7">test</a></td></tr><tr class="passedeven"><td><a href="#m8">test</a></td></tr><tr class="passedeven"><td><a href="#m9">test</a></td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">widget.Accordion#collapseContent</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna. ] but found [Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.]
+<h2>Default test</h2><h3 id="m0">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9786780, 199.99]</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The product is not match, the product is: LG 86&quot; Class - QNED80 Series - 4K UHD QNED TV - Allstate 3-Year Protection Plan Bundle Included for 5 years of total coverage* expected [199.99] but found [2,199.99]
 	at org.testng.Assert.fail(Assert.java:110)
 	at org.testng.Assert.failNotEquals(Assert.java:1413)
 	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
 	at org.testng.Assert.assertEquals(Assert.java:131)
 	at org.testng.Assert.assertEquals(Assert.java:655)
-	at org.testng.Assert.assertEquals(Assert.java:665)
-	at widget.Accordion.collapseContent(Accordion.java:36)
+	at dataDriven.Costco.test(Costco.java:68)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -50,6 +49,14 @@
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">widget.Accordion#defaultTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9765165, 399.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9765080, 1,799.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9865001, 1,599.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9832132, 129.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9785888, 2,399.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9885008, 1,599.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9765022, 1,899.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9785090, 2,299.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">dataDriven.Costco#test</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[9755165, 269.99]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
