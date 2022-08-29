@@ -93,7 +93,7 @@ public class MortgageCalculator {
 			lib.enterText(loanTerm, testData.getTermYear() + "");
 
 			// Enter Property Tax - int tax
-
+ 
 			lib.enterText(taxField, testData.getTax());
 
 			// Select Buy / Refi - String (buy, refi)
