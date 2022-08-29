@@ -11,10 +11,12 @@ public class PojoClassForMortgageCalculator {
 	int termYear;
 	String tax;
 	String buyOption;
+	String monthlyPayment;
 	
 	public PojoClassForMortgageCalculator
 	(String passedHomePrice, String passedDownPayment, Boolean passedDownPaymentOption, 
-			String passedRate, int passedTermYear, String passedTax, String passedBuyOption) {
+			String passedRate, int passedTermYear, String passedTax, String passedBuyOption,
+			String passedMonthlyPayment) {
 		
 		this.homePrice = passedHomePrice;
 		this.downPayment = passedDownPayment;
@@ -23,7 +25,12 @@ public class PojoClassForMortgageCalculator {
 		this.termYear = passedTermYear;
 		this.tax = passedTax;
 		this.buyOption = passedBuyOption;
+		this.monthlyPayment = passedMonthlyPayment;
 		
+	}
+	
+	public String getMonthlyPayment() {
+		return monthlyPayment;
 	}
 	
 	

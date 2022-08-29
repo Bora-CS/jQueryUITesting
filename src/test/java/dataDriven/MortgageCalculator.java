@@ -1,7 +1,6 @@
 package dataDriven;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,70 +8,73 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import library.UtilityLibrary;
 
 public class MortgageCalculator {
 
-	static WebDriver driver;
-	
-	static String url = "https://www.mortgagecalculator.org/";
+	WebDriver driver;
+	UtilityLibrary lib;
 
-	static By homeValue = By.id("homeval");
-	static By downPayment = By.id("downpayment");
-	static By percentRadioButton = By.cssSelector("input[value='percent']");
-	static By moneyRadioButton = By.cssSelector("input[value='money']");
-	static By interestRate = By.id("intrstsrate");
-	static By loanTerm = By.id("loanterm");
-	static By taxField = By.id("pptytax");
-	static By buyOptionDropDown = By.name("param[refiorbuy]");
-	static By calculatButton = By.xpath("//input[@value='Calculate']");
+	String url = "https://www.mortgagecalculator.org/";
 
-	public static void main(String[] args) {
+	By homeValue = By.id("homeval");
+	By downPayment = By.id("downpayment");
+	By percentRadioButton = By.cssSelector("input[value='percent']");
+	By moneyRadioButton = By.cssSelector("input[value='money']");
+	By interestRate = By.id("intrstsrate");
+	By loanTerm = By.id("loanterm");
+	By taxField = By.id("pptytax");
+	By buyOptionDropDown = By.name("param[refiorbuy]");
+	By calculatButton = By.xpath("//input[@value='Calculate']");
 
+	@BeforeMethod
+	public void runBeforeTest() {
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/Driver/chromedriver");
+		driver = new ChromeDriver();
+		lib = new UtilityLibrary(driver);
+	}
 
-		PojoClassForMortgageCalculator pojo_1 = 
-				new PojoClassForMortgageCalculator("800000", "20000", false, "5", 30,
-				"8000", "buy");
-		
-		PojoClassForMortgageCalculator pojo_2 = 
-				new PojoClassForMortgageCalculator("800000", "20000", false, "5", 30,
-				"8000", "buy");
-		
-		PojoClassForMortgageCalculator pojo_3 = 
-				new PojoClassForMortgageCalculator("800000", "20000", false, "5", 30,
-				"8000", "buy");
-		
-		PojoClassForMortgageCalculator pojo_4 = 
-				new PojoClassForMortgageCalculator("800000", "20000", false, "5", 30,
-				"8000", "buy");
+	@AfterMethod
+	public void runAftermethod() {
+		lib.customeWait(3);
+		driver.quit();
+	}
+
+	@Test
+	void testCode() {
+
+		PojoClassForMortgageCalculator pojo_1 = new PojoClassForMortgageCalculator("800000", "20000", false, "5", 30,
+				"8000", "buy", "$5,262.21");
+
+		PojoClassForMortgageCalculator pojo_2 = new PojoClassForMortgageCalculator("800000", "20000", false, "5", 30,
+				"8000", "buy", "$5,262.21");
+
+		PojoClassForMortgageCalculator pojo_3 = new PojoClassForMortgageCalculator("800000", "20000", false, "5", 30,
+				"8000", "buy", "$0");
+
+		PojoClassForMortgageCalculator pojo_4 = new PojoClassForMortgageCalculator("800000", "20000", false, "5", 30,
+				"8000", "buy", "$0");
 
 		List<PojoClassForMortgageCalculator> datas = new ArrayList<>();
 		datas.add(pojo_1);
 		datas.add(pojo_2);
 		datas.add(pojo_3);
 		datas.add(pojo_4);
-		
-		
-		for(PojoClassForMortgageCalculator pojo : datas) {
-			testCode(pojo);
-		}
-		
 
-	}
-
-	
-	static void testCode(PojoClassForMortgageCalculator testData) {
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/Driver/chromedriver");
-		driver = new ChromeDriver();
-
-		try {
+		for (PojoClassForMortgageCalculator testData : datas) {
 
 			driver.get(url);
 
 			// Enter Home Value - int homePrice
-			enterText(homeValue, testData.getHomePrice());
+			lib.enterText(homeValue, testData.getHomePrice());
 
 			// Enter Down payment - int downPayment, int radioOption (dollar, percentage)
-			enterText(downPayment, testData.getDownPayment());
+			lib.enterText(downPayment, testData.getDownPayment());
 
 			WebElement percentageRadio = driver.findElement(percentRadioButton);
 			WebElement moneyRadio = driver.findElement(moneyRadioButton);
@@ -84,15 +86,15 @@ public class MortgageCalculator {
 			}
 
 			// Enter Interest Rate - int rate
-			enterText(interestRate, testData.getRate());
+			lib.enterText(interestRate, testData.getRate());
 
 			// Enter Loan term - int years
 
-			enterText(loanTerm, testData.getTermYear() + "");
+			lib.enterText(loanTerm, testData.getTermYear() + "");
 
 			// Enter Property Tax - int tax
 
-			enterText(taxField, testData.getTax());
+			lib.enterText(taxField, testData.getTax());
 
 			// Select Buy / Refi - String (buy, refi)
 			WebElement buyingOption = driver.findElement(buyOptionDropDown);
@@ -104,36 +106,19 @@ public class MortgageCalculator {
 			}
 
 			// Click Calculate button
-			clickButton(calculatButton);
+			lib.clickElement(calculatButton);
+			lib.customeWait(3);
 
 			// Verify Result
+			String actualPrice = lib.getText(By.xpath("//h3[contains(text(),'$')]"));
+			System.out.println("Price :" + actualPrice);
 
-			customeWait(5);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+			Assert.assertEquals(actualPrice, testData.getMonthlyPayment(), "This test case is failed");
 
-			driver.quit();
+			lib.customeWait(5);
+			System.out.println("This test case is passed");
 		}
 
-	}
-
-	static void clickButton(By locator) {
-		driver.findElement(locator).click();
-	}
-
-	static void enterText(By locator, String text) {
-		WebElement elem = driver.findElement(locator);
-		elem.sendKeys(text);
-		customeWait(1);
-	}
-
-	static void customeWait(int second) {
-		try {
-			Thread.sleep(second * 1000);
-		} catch (Exception e) {
-
-		}
 	}
 
 }
