@@ -61,7 +61,7 @@ public class MortgageCalculator {
 
 	
 	static void testCode(PojoClassForMortgageCalculator testData) {
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/Driver/chromedriver");
 		driver = new ChromeDriver();
 
 		try {
