@@ -47,21 +47,29 @@ public class APICalls {
 		request.body(body);
 
 		Response resp = request.put("/api/profile/experience");
-		
-		System.out.println("Add Expirence status code is: "+resp.getStatusCode());
-		
+
+		System.out.println("Add Expirence status code is: " + resp.getStatusCode());
+
 		return resp.getBody();
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public static ResponseBody addEducationCall(String token, HashMap<String, String> body) {
+
+		RestAssured.baseURI = "https://boratech.herokuapp.com";
+		RequestSpecification request = RestAssured.given();
+
+		request.header("Content-Type", "application/json");
+		request.header("x-auth-token", token);
+
+		request.body(body);
+
+		Response resp = request.put("/api/profile/education");
+
+		System.out.println("Add Education status code is: " + resp.getStatusCode());
+
+		return resp.getBody();
+
+	}
 
 }

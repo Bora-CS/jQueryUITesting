@@ -21,7 +21,7 @@ public class SecondAPITest {
 //		APICalls api = new APICalls();
 //		String token = api.loginCall("muradil.erkin@boratechschool.com", "Boratech");
 		
-		String token = APICalls.loginCall("muradil.erkin@boratechschool.com", "Boratech");
+		String token = APICalls.loginCall("chenli.mutschler@gmail.com", "Mymom0608&");
 		
 		System.out.println(token);
 		
@@ -49,7 +49,7 @@ public class SecondAPITest {
 		request.header("Content-Type", "application/json");
 		request.header("x-auth-token", token);
 
-		Map<String, String> body = new HashMap<String, String>();
+		HashMap<String, String> body = new HashMap<String, String>();
 		body.put("company", "boraAPI");
 		body.put("title", "API Tester");
 		body.put("location", "");
