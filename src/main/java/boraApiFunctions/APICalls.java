@@ -55,9 +55,42 @@ public class APICalls {
 	}
 	
 	
+	public static ResponseBody addEducationCall(String token, HashMap<String, Object> body) {
+
+		RestAssured.baseURI = "https://boratech.herokuapp.com";
+		RequestSpecification request = RestAssured.given();
+
+		request.header("Content-Type", "application/json");
+		request.header("x-auth-token", token);
+
+		request.body(body);
+
+		Response resp = request.put("/api/profile/education");
+		
+		System.out.println("Add Education status code is: "+resp.getStatusCode());
+		
+		return resp.getBody();
+
+	}
 	
+	public static ResponseBody deleteExpirence(String token, String expirenceId) {
+		
+		//1. Start API
+		RestAssured.baseURI = "https://boratech.herokuapp.com";
+		RequestSpecification request = RestAssured.given();
+
+		//2. Crate Header
+		request.header("Content-Type", "application/json");
+		request.header("x-auth-token", token);
+
+		//3. Do a API call
+		Response resp = request.delete("/api/profile/experience/"+expirenceId);
 	
-	
+		System.out.println("Delete Expirence status code is: "+resp.getStatusCode());
+		
+		return resp.getBody();
+		
+	}
 	
 	
 	
