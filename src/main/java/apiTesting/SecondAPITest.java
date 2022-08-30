@@ -20,12 +20,11 @@ public class SecondAPITest {
 
 //		APICalls api = new APICalls();
 //		String token = api.loginCall("muradil.erkin@boratechschool.com", "Boratech");
-		
+
 		String token = APICalls.loginCall("chenli.mutschler@gmail.com", "Mymom0608&");
-		
+
 		System.out.println(token);
-		
-		
+
 		HashMap<String, String> body = new HashMap<String, String>();
 		body.put("company", "boraAPI");
 		body.put("title", "API Tester");
@@ -34,9 +33,28 @@ public class SecondAPITest {
 		body.put("to", "2022-08-22");
 		body.put("description", "This is crom from postman");
 
-		ResponseBody responBody= APICalls.addExpirenceCall(token, body);
-		
-		System.out.println(responBody.asPrettyString());
+		ResponseBody responBody = APICalls.addExpirenceCall(token, body);
+
+		System.out.println("expirence body is: " + responBody.asPrettyString());
+
+		HashMap<String, Object> educationBody = new HashMap<String, Object>();
+
+		educationBody.put("current", false);
+		educationBody.put("school", "pluralsight");
+		educationBody.put("degree", "Java Certification");
+		educationBody.put("fieldofstudy", "java");
+		educationBody.put("from", "2019-03-03");
+		educationBody.put("to", "2019-04-03");
+		educationBody.put("description",
+				"A short online program to help individuals to gain knowledge and get prepared for certification exams.");
+
+		responBody = APICalls.addEducationCall(token, educationBody);
+
+		System.out.println("education body is: " + responBody.asPrettyString());
+
+		responBody = APICalls.deleteExpirence(token, "630d628283e7280017b0c60e");
+
+		System.out.println("delete expirence body is: " + responBody.asPrettyString());
 
 	}
 

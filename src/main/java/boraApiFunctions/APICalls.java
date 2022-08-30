@@ -72,4 +72,23 @@ public class APICalls {
 
 	}
 
+	public static ResponseBody deleteExpirence(String token, String expirenceId) {
+
+		// 1. Start API
+		RestAssured.baseURI = "https://boratech.herokuapp.com";
+		RequestSpecification request = RestAssured.given();
+
+		// 2. Crate Header
+		request.header("Content-Type", "application/json");
+		request.header("x-auth-token", token);
+
+		// 3. Do a API call
+		Response resp = request.delete("/api/profile/experience/" + expirenceId);
+
+		System.out.println("Delete Expirence status code is: " + resp.getStatusCode());
+
+		return resp.getBody();
+
+	}
+
 }
