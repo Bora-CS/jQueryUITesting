@@ -25,7 +25,7 @@ public class UtilityLibrary {
 
 	public WebElement getElement(By locator) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		highLight(locator);
 		return driver.findElement(locator);

@@ -1,7 +1,7 @@
 package dataDriven;
 
+
 import java.util.ArrayList;
-import java.util.List;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,19 +26,19 @@ public class Costco extends BaseTest {
 		lib = new UtilityLibrary(driver);
 
 	}
+
 	@DataProvider
-	
+
 	public String[][] testData() {
 		DataFileReader reader = new DataFileReader();
 		ArrayList<String[]> testData = reader.dataReader();
 		String[][] costcoData = new String[testData.size()][2];
-		for(int i=0; i<testData.size();i++) {
+		for (int i = 0; i < testData.size(); i++) {
 			costcoData[i] = testData.get(i);
 		}
 		return costcoData;
 	}
-		
-		
+
 //		String[] test1 = { "9785888", "2,399.99" };
 //		String[] test2 = { "9865001", "1,599.99" };
 //		String[] test3 = { "9765080", "1,799.99" };
@@ -54,12 +54,11 @@ public class Costco extends BaseTest {
 //	return testDatas;
 //		
 //	}
-	
 
-	@Test(dataProvider = "testData")
+	@Test(dataProvider = "costcoTestData")
 	public void test(String[] data) {
-			
-		
+
+
 			String prodcutId= data[0];
 			String expectingProductPrice = data[1];
 			
@@ -80,8 +79,7 @@ public class Costco extends BaseTest {
 			Assert.assertEquals(productPrice, expectingProductPrice,
 					"The product is not match, the product is: " + productTitle);
 
-		}
+		
 
 	}
-
-
+}
