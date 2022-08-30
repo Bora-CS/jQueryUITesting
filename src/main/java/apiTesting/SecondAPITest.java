@@ -5,16 +5,42 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
+import boraApiFunctions.APICalls;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 
 public class SecondAPITest {
-	
-	String token;
-	
 
-	@Test(priority = 2)
+	String token;
+
+	@Test
+	public void testAPIFunction() {
+
+//		APICalls api = new APICalls();
+//		String token = api.loginCall("muradil.erkin@boratechschool.com", "Boratech");
+		
+		String token = APICalls.loginCall("muradil.erkin@boratechschool.com", "Boratech");
+		
+		System.out.println(token);
+		
+		
+		HashMap<String, String> body = new HashMap<String, String>();
+		body.put("company", "boraAPI");
+		body.put("title", "API Tester");
+		body.put("location", "");
+		body.put("from", "2020-08-22");
+		body.put("to", "2022-08-22");
+		body.put("description", "This is crom from postman");
+
+		ResponseBody responBody= APICalls.addExpirenceCall(token, body);
+		
+		System.out.println(responBody.asPrettyString());
+
+	}
+
+	@Test(priority = 2, enabled = false)
 	public void addExpirence() {
 
 		RestAssured.baseURI = "https://boratech.herokuapp.com";
@@ -30,15 +56,15 @@ public class SecondAPITest {
 		body.put("from", "2020-08-22");
 		body.put("to", "2022-08-22");
 		body.put("description", "This is crom from postman");
-		
+
 		request.body(body);
-		
+
 		Response resp = request.put("/api/profile/experience");
-		System.out.println("Add Expirence body is: \n"+resp.getBody().asPrettyString());
- 
+		System.out.println("Add Expirence body is: \n" + resp.getBody().asPrettyString());
+
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, enabled = false)
 	public void login_user_test() {
 
 		// base URL + endPoint
