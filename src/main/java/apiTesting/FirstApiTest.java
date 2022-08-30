@@ -49,8 +49,8 @@ public class FirstApiTest {
 		request.header("Content-Type", "application/json");
 
 		Map<String, String> body = new HashMap<String, String>();
-		body.put("email", "muradil.erkin@boratechschool.com");
-		body.put("password", "Boratech");
+		body.put("email", "shuqin3232331@gmail.com");
+		body.put("password", "Tony3232331!");
 
 		request.body(body);
 
@@ -75,5 +75,7 @@ public class FirstApiTest {
 		return token;
 
 	}
+	
+	
 
 }
